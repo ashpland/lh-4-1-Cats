@@ -12,6 +12,3 @@
 @interface MapViewController : UIViewController <MKMapViewDelegate>
 
 @end
-
-
-

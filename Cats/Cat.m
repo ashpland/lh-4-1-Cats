@@ -13,6 +13,7 @@
 @property (strong, nonatomic) NSURL *url;
 @property (copy, nonatomic) UIImage *image;
 
+
 @end
 
 
@@ -20,13 +21,22 @@
 
 - (instancetype)initWithULR:(NSURL *)url andDescription:(NSString *)description
 {
+    self.coordinate = kCLLocationCoordinate2DInvalid;
+    return [self initWithULR:url andDescription:description andLocation:kCLLocationCoordinate2DInvalid];
+}
+
+- (instancetype)initWithULR:(NSURL *)url andDescription:(NSString *)description andLocation:(CLLocationCoordinate2D)location
+{
     self = [super init];
     if (self) {
         _url = url;
         _photoDescription = description;
+        _location = location;
+
     }
     return self;
 }
+
 
 +(instancetype)newCatWithULR:(NSURL *)url andDescription:(NSString *)description
 {
@@ -69,5 +79,22 @@
     
     [downloadTask resume];
 }
+
+@synthesize coordinate = _coordinate;
+
+-(void)test{
+    self.coordinate = kCLLocationCoordinate2DInvalid;
+}
+
+//-(CLLocationCoordinate2D)coordinate{
+//    return self.location;
+//}
+
+@synthesize title = _title;
+
+-(NSString *)title{
+    return self.photoDescription;
+}
+
 
 @end

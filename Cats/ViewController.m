@@ -48,7 +48,7 @@
 
 
 - (void)downloadCatData {
-    NSURL *urlToDownload = [NSURL URLWithString:@"https://api.flickr.com/services/rest/?method=flickr.photos.search&format=json&nojsoncallback=1&api_key=6ac625bcee7d4d029c39412ab2df4b38&tags=cat"];
+    NSURL *urlToDownload = [NSURL URLWithString:@"https://api.flickr.com/services/rest/?method=flickr.photos.search&format=json&nojsoncallback=1&api_key=6ac625bcee7d4d029c39412ab2df4b38&tags=cat&has_geo=1"];
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration]; // 3
     
