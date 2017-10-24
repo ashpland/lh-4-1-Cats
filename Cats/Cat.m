@@ -11,7 +11,7 @@
 @interface Cat ()
 
 @property (strong, nonatomic) NSURL *url;
-@property (copy, nonatomic) UIImage *image;
+@property (copy, nonatomic, readwrite) UIImage *image;
 
 
 @end
@@ -21,7 +21,6 @@
 
 - (instancetype)initWithULR:(NSURL *)url andDescription:(NSString *)description
 {
-    self.coordinate = kCLLocationCoordinate2DInvalid;
     return [self initWithULR:url andDescription:description andLocation:kCLLocationCoordinate2DInvalid];
 }
 
@@ -43,14 +42,16 @@
     return [[Cat alloc] initWithULR:url andDescription:description];
 }
 
--(void)getCatImage:(void (^)(UIImage *))completionHandler
+-(void)downloadCatImage:(void (^)(Cat *))completionHandler
 {
+//    NSLog(@"Cat %lu: %@", self.index, self.image);
+    
     if (self.image) {
-        completionHandler(self.image);
+        completionHandler(self);
     } else {
         [self downloadImage:^(UIImage *theImage){
             self.image = theImage;
-            completionHandler(theImage);
+            completionHandler(self);
         }];
     }
 
@@ -76,19 +77,14 @@
                                                             completionHandler(downloadedImage);
                                                             
                                                         }];
-    
     [downloadTask resume];
 }
 
 @synthesize coordinate = _coordinate;
 
--(void)test{
-    self.coordinate = kCLLocationCoordinate2DInvalid;
+-(CLLocationCoordinate2D)coordinate{
+    return self.location;
 }
-
-//-(CLLocationCoordinate2D)coordinate{
-//    return self.location;
-//}
 
 @synthesize title = _title;
 

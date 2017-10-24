@@ -43,6 +43,9 @@
     
     
     Cat *newCat = [Cat newCatWithULR:catURL andDescription:[catInfo objectForKey:@"title"]];
+    
+    newCat.index = self.theCats.count;
+    
     [self.theCats addObject:newCat];
     
     [self addCatLocation:newCat withID:[catInfo objectForKey:@"id"]];

@@ -19,17 +19,26 @@
 - (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
     CatCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"catCell" forIndexPath:indexPath];
     
-    cell.catCellImageView.image = nil;
-    
+
     Cat *currentCat = [self.catManager getCatForIndex:indexPath.item];
+
+    cell.cat = currentCat;
+        
+    cell.catCellImageView.image = nil;
     
     cell.catCellLabel.text = currentCat.photoDescription;
 
-    [currentCat getCatImage:^(UIImage *theImage) {
-        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-            cell.catCellImageView.image = theImage;
+    if (currentCat.image) {
+        cell.catCellImageView.image = currentCat.image;
+    } else {
+        [currentCat downloadCatImage:^(Cat *theCat) {
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                if ([cell.cat isEqual:theCat])
+                    cell.catCellImageView.image = theCat.image;
+
+            }];
         }];
-    }];
+    }
     
     return cell;
 }

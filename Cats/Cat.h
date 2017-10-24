@@ -12,6 +12,8 @@
 
 @interface Cat : NSObject <MKAnnotation>
 
+@property (copy, nonatomic, readonly) UIImage *image;
+@property (assign, nonatomic) NSInteger index;
 @property (copy, nonatomic) NSString *photoDescription;
 @property (assign, nonatomic) CLLocationCoordinate2D location;
 
@@ -21,7 +23,7 @@
 
 + (instancetype)newCatWithULR:(NSURL *)url andDescription:(NSString *)description;
 
-- (void)getCatImage:(void (^)(UIImage *theImage))completionHandler;
+- (void)downloadCatImage:(void (^)(Cat *theCat))completionHandler;
 
 
 
