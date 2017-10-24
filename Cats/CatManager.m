@@ -52,5 +52,10 @@
         return nil;
 }
 
+-(NSInteger)numberOfCats
+{
+    return self.theCats.count;
+}
+
 
 @end

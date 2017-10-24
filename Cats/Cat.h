@@ -18,4 +18,8 @@
 
 + (instancetype)newCatWithULR:(NSURL *)url andDescription:(NSString *)description;
 
+- (void)getCatImage:(void (^)(UIImage *theImage))blockName;
+
+
+
 @end

@@ -15,6 +15,7 @@
 		491E0B1B1F9EE387005BA4A7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 491E0B1A1F9EE387005BA4A7 /* main.m */; };
 		491E0B231F9EE54E005BA4A7 /* Cat.m in Sources */ = {isa = PBXBuildFile; fileRef = 491E0B221F9EE54E005BA4A7 /* Cat.m */; };
 		491E0B261F9EE683005BA4A7 /* CatManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 491E0B251F9EE683005BA4A7 /* CatManager.m */; };
+		491E0B291F9EF176005BA4A7 /* CatCollectionDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 491E0B281F9EF176005BA4A7 /* CatCollectionDataSource.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,8 @@
 		491E0B221F9EE54E005BA4A7 /* Cat.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Cat.m; sourceTree = "<group>"; };
 		491E0B241F9EE683005BA4A7 /* CatManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CatManager.h; sourceTree = "<group>"; };
 		491E0B251F9EE683005BA4A7 /* CatManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CatManager.m; sourceTree = "<group>"; };
+		491E0B271F9EF176005BA4A7 /* CatCollectionDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CatCollectionDataSource.h; sourceTree = "<group>"; };
+		491E0B281F9EF176005BA4A7 /* CatCollectionDataSource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CatCollectionDataSource.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +71,8 @@
 				491E0B0C1F9EE387005BA4A7 /* AppDelegate.m */,
 				491E0B0E1F9EE387005BA4A7 /* ViewController.h */,
 				491E0B0F1F9EE387005BA4A7 /* ViewController.m */,
+				491E0B271F9EF176005BA4A7 /* CatCollectionDataSource.h */,
+				491E0B281F9EF176005BA4A7 /* CatCollectionDataSource.m */,
 				491E0B211F9EE54E005BA4A7 /* Cat.h */,
 				491E0B221F9EE54E005BA4A7 /* Cat.m */,
 				491E0B241F9EE683005BA4A7 /* CatManager.h */,
@@ -153,6 +158,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				491E0B261F9EE683005BA4A7 /* CatManager.m in Sources */,
+				491E0B291F9EF176005BA4A7 /* CatCollectionDataSource.m in Sources */,
 				491E0B231F9EE54E005BA4A7 /* Cat.m in Sources */,
 				491E0B101F9EE387005BA4A7 /* ViewController.m in Sources */,
 				491E0B1B1F9EE387005BA4A7 /* main.m in Sources */,

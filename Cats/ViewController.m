@@ -17,58 +17,62 @@
 
 @implementation ViewController
 
+
+
+
 -(void)viewDidLoad {
+    
+    self.navigationController.navigationBar.prefersLargeTitles = YES;
+
     
     self.catManager = [CatManager new];
     
-    NSDictionary *testDict = @{
-                               @"id" : @"37183031884",
-                               @"secret" : @"b1a05cfe1d",
-                               @"server" : @"4451",
-                               @"farm" : @5,
-                               @"title" : @"And bringing their fiendish cat along"
-                               };
-    
-    
-    [self.catManager addCat:testDict];
-    
-    Cat *newCat = [self.catManager getCatForIndex:0];
-    
-    
-    
-    
-    
-    
-//
-//NSURL *urlToDownload = [NSURL URLWithString:@"http://imgur.com/CoQ8aNl.png"]; // 1
-//
-//NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration]; // 2
-//NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration]; // 3
-//
-//NSURLSessionDownloadTask *downloadTask = [session downloadTaskWithURL:urlToDownload
-//                                                    completionHandler:^(NSURL * _Nullable locationOfDownloadedFile,
-//                                                                        NSURLResponse * _Nullable response,
-//                                                                        NSError * _Nullable error) {
-//                                                        if (error) { // 1
-//                                                            // Handle the error
-//                                                            NSLog(@"error: %@", error.localizedDescription);
-//                                                            return;
-//                                                        }
-//
-//                                                        NSData *downloadedRawData = [NSData dataWithContentsOfURL:locationOfDownloadedFile];
-//                                                        UIImage *imageFromDownloadedRawData = [UIImage imageWithData:downloadedRawData]; // 2
-//
-//                                                        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-//                                                            // This will run on the main queue
-//
-//                                                            self.theImageView.image = imageFromDownloadedRawData; // 4
-//                                                        }];
-//
-//                                                    }]; // 4
-//
-//[downloadTask resume]; // 5
+    //Cat *newCat = [self.catManager getCatForIndex:0];
+
+    [self downloadCatData];
 
 }
+
+
+- (void)downloadCatData {
+    NSURL *urlToDownload = [NSURL URLWithString:@"https://api.flickr.com/services/rest/?method=flickr.photos.search&format=json&nojsoncallback=1&api_key=6ac625bcee7d4d029c39412ab2df4b38&tags=cat"];
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration]; // 3
+    
+    NSURLSessionDownloadTask *downloadTask = [session downloadTaskWithURL:urlToDownload
+                                                        completionHandler:^(NSURL * _Nullable locationOfDownloadedFile,
+                                                                            NSURLResponse * _Nullable response,
+                                                                            NSError * _Nullable error) {
+                                                            [self processJSON:error locationOfDownloadedFile:locationOfDownloadedFile];
+                                                            
+                                                        }];
+    
+    [downloadTask resume];
+}
+
+- (void)processJSON:(NSError * _Nullable)error locationOfDownloadedFile:(NSURL * _Nullable)locationOfDownloadedFile {
+    if (error) { // 1
+        // Handle the error
+        NSLog(@"error: %@", error.localizedDescription);
+        return;
+    }
+    
+    NSData *downloadedRawData = [NSData dataWithContentsOfURL:locationOfDownloadedFile];
+    
+    NSError *jsonError = nil;
+    NSArray *catDicts = [NSJSONSerialization JSONObjectWithData:downloadedRawData options:0 error:&jsonError];
+    
+    if (jsonError) { // 3
+        // Handle the error
+        NSLog(@"jsonError: %@", jsonError.localizedDescription);
+        return;
+    }
+    
+    for (NSDictionary *curCatDict in catDicts) {
+        [self.catManager addCat:curCatDict];
+    }
+}
+
 
 
 @end

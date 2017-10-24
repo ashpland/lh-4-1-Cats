@@ -32,5 +32,15 @@
     return [[Cat alloc] initWithULR:url andDescription:description];
 }
 
+-(UIImage *)image{
+    return nil;
+}
+
+-(void)getCatImage:(void (^)(UIImage *))blockName
+{
+    UIImage *theimage;
+    
+    blockName(theimage);
+}
 
 @end

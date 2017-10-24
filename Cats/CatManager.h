@@ -13,5 +13,6 @@
 
 -(void)addCat:(NSDictionary *)catInfo;
 -(Cat *)getCatForIndex:(NSInteger)index;
+-(NSInteger)numberOfCats;
 
 @end
