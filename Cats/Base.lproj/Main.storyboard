@@ -27,16 +27,16 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="catCell" id="o7K-V0-teB">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="catCell" id="o7K-V0-teB" customClass="CatCollectionViewCell">
                                         <rect key="frame" x="87.5" y="0.0" width="200" height="200"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hT0-uK-UXM">
-                                                    <rect key="frame" x="79" y="179" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="hT0-uK-UXM">
+                                                    <rect key="frame" x="64.5" y="164" width="71" height="36"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -55,6 +55,10 @@
                                             <constraint firstAttribute="bottom" secondItem="S1e-Tx-MDX" secondAttribute="bottom" id="kp6-QY-jaX"/>
                                             <constraint firstItem="S1e-Tx-MDX" firstAttribute="top" secondItem="o7K-V0-teB" secondAttribute="top" id="lM8-g1-n4F"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="catCellImageView" destination="S1e-Tx-MDX" id="ffM-Pb-WB7"/>
+                                            <outlet property="catCellLabel" destination="hT0-uK-UXM" id="eFZ-bW-BOQ"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -69,6 +73,9 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="😻 Cats! 😻" id="atR-lS-mHF"/>
+                    <connections>
+                        <outlet property="collectionView" destination="4Pi-0x-Jdc" id="vHF-uJ-20U"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

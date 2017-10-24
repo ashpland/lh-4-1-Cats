@@ -10,7 +10,7 @@
 #import "CatManager.h"
 @import UIKit;
 
-@interface CatCollectionDataSource : NSObject <UITableViewDataSource>
+@interface CatCollectionDataSource : NSObject <UICollectionViewDataSource>
 
 @property (strong, nonatomic) CatManager *catManager;
 

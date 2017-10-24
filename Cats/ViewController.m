@@ -8,10 +8,15 @@
 
 #import "ViewController.h"
 #import "CatManager.h"
+#import "CatCollectionDataSource.h"
+#import "PhotoLayout.h"
 
 @interface ViewController ()
 
 @property (strong, nonatomic) CatManager *catManager;
+@property (strong, nonatomic) UIImage *testImage;
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (strong, nonatomic) CatCollectionDataSource *catCollectionDataSource;
 
 @end
 
@@ -27,10 +32,18 @@
     
     self.catManager = [CatManager new];
     
-    //Cat *newCat = [self.catManager getCatForIndex:0];
-
     [self downloadCatData];
 
+    self.catCollectionDataSource = [CatCollectionDataSource new];
+    self.catCollectionDataSource.catManager = self.catManager;
+    
+    self.collectionView.dataSource = self.catCollectionDataSource;
+    self.collectionView.delegate = self;
+    
+    self.collectionView.collectionViewLayout = [[PhotoLayout alloc] initWithPhotosPerRow:2];
+
+    
+    
 }
 
 
@@ -60,7 +73,7 @@
     NSData *downloadedRawData = [NSData dataWithContentsOfURL:locationOfDownloadedFile];
     
     NSError *jsonError = nil;
-    NSArray *catDicts = [NSJSONSerialization JSONObjectWithData:downloadedRawData options:0 error:&jsonError];
+    NSDictionary *parsedJSON = [NSJSONSerialization JSONObjectWithData:downloadedRawData options:0 error:&jsonError];
     
     if (jsonError) { // 3
         // Handle the error
@@ -68,9 +81,19 @@
         return;
     }
     
+    NSArray *catDicts = [[parsedJSON objectForKey:@"photos"] objectForKey:@"photo"];
+    
+    
     for (NSDictionary *curCatDict in catDicts) {
         [self.catManager addCat:curCatDict];
     }
+    
+    
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        [self.collectionView reloadData];
+    }];
+
+    
 }
 
 

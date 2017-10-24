@@ -7,35 +7,37 @@
 //
 
 #import "CatCollectionDataSource.h"
+#import "CatCollectionViewCell.h"
 
 @implementation CatCollectionDataSource
 
 
-
-
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
-}
-
-- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return [self.catManager numberOfCats];
 }
 
-
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"catCell"];
+- (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    CatCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"catCell" forIndexPath:indexPath];
     
     Cat *currentCat = [self.catManager getCatForIndex:indexPath.item];
     
-    cell.textLabel.text = currentCat.photoDescription;
+    cell.backgroundColor = [UIColor blueColor];
+        
+    cell.catCellLabel.text = currentCat.photoDescription;
     
-    [currentCat getCatImage:^(UIImage *theImage) {
-        cell.imageView.image = theImage;
-        [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-    }];
-
+    cell.catCellImageView.image = nil;
+    
+    if (currentCat.image) {
+        cell.catCellImageView.image = currentCat.image;
+    } else {
+        [currentCat getCatImage:^(UIImage *theImage) {
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                cell.catCellImageView.image = theImage;
+                [collectionView reloadItemsAtIndexPaths:@[indexPath]];
+            }];
+        }];
+    }
+    
     return cell;
 }
 

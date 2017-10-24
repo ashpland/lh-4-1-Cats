@@ -18,7 +18,7 @@
 
 + (instancetype)newCatWithULR:(NSURL *)url andDescription:(NSString *)description;
 
-- (void)getCatImage:(void (^)(UIImage *theImage))blockName;
+- (void)getCatImage:(void (^)(UIImage *theImage))completionHandler;
 
 
 

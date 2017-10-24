@@ -16,6 +16,8 @@
 		491E0B231F9EE54E005BA4A7 /* Cat.m in Sources */ = {isa = PBXBuildFile; fileRef = 491E0B221F9EE54E005BA4A7 /* Cat.m */; };
 		491E0B261F9EE683005BA4A7 /* CatManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 491E0B251F9EE683005BA4A7 /* CatManager.m */; };
 		491E0B291F9EF176005BA4A7 /* CatCollectionDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 491E0B281F9EF176005BA4A7 /* CatCollectionDataSource.m */; };
+		491E0B2C1F9F26AB005BA4A7 /* CatCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 491E0B2B1F9F26AB005BA4A7 /* CatCollectionViewCell.m */; };
+		491E0B2F1F9F2F78005BA4A7 /* PhotoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 491E0B2E1F9F2F78005BA4A7 /* PhotoLayout.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +37,10 @@
 		491E0B251F9EE683005BA4A7 /* CatManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CatManager.m; sourceTree = "<group>"; };
 		491E0B271F9EF176005BA4A7 /* CatCollectionDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CatCollectionDataSource.h; sourceTree = "<group>"; };
 		491E0B281F9EF176005BA4A7 /* CatCollectionDataSource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CatCollectionDataSource.m; sourceTree = "<group>"; };
+		491E0B2A1F9F26AB005BA4A7 /* CatCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CatCollectionViewCell.h; sourceTree = "<group>"; };
+		491E0B2B1F9F26AB005BA4A7 /* CatCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CatCollectionViewCell.m; sourceTree = "<group>"; };
+		491E0B2D1F9F2F78005BA4A7 /* PhotoLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoLayout.h; sourceTree = "<group>"; };
+		491E0B2E1F9F2F78005BA4A7 /* PhotoLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoLayout.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,10 +79,14 @@
 				491E0B0F1F9EE387005BA4A7 /* ViewController.m */,
 				491E0B271F9EF176005BA4A7 /* CatCollectionDataSource.h */,
 				491E0B281F9EF176005BA4A7 /* CatCollectionDataSource.m */,
+				491E0B2A1F9F26AB005BA4A7 /* CatCollectionViewCell.h */,
+				491E0B2B1F9F26AB005BA4A7 /* CatCollectionViewCell.m */,
 				491E0B211F9EE54E005BA4A7 /* Cat.h */,
 				491E0B221F9EE54E005BA4A7 /* Cat.m */,
 				491E0B241F9EE683005BA4A7 /* CatManager.h */,
 				491E0B251F9EE683005BA4A7 /* CatManager.m */,
+				491E0B2D1F9F2F78005BA4A7 /* PhotoLayout.h */,
+				491E0B2E1F9F2F78005BA4A7 /* PhotoLayout.m */,
 				491E0B111F9EE387005BA4A7 /* Main.storyboard */,
 				491E0B141F9EE387005BA4A7 /* Assets.xcassets */,
 				491E0B161F9EE387005BA4A7 /* LaunchScreen.storyboard */,
@@ -157,6 +167,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				491E0B2F1F9F2F78005BA4A7 /* PhotoLayout.m in Sources */,
+				491E0B2C1F9F26AB005BA4A7 /* CatCollectionViewCell.m in Sources */,
 				491E0B261F9EE683005BA4A7 /* CatManager.m in Sources */,
 				491E0B291F9EF176005BA4A7 /* CatCollectionDataSource.m in Sources */,
 				491E0B231F9EE54E005BA4A7 /* Cat.m in Sources */,

@@ -32,15 +32,41 @@
     return [[Cat alloc] initWithULR:url andDescription:description];
 }
 
--(UIImage *)image{
-    return nil;
+-(void)getCatImage:(void (^)(UIImage *))completionHandler
+{
+    if (self.image) {
+        completionHandler(self.image);
+    } else {
+        [self downloadImage:^(UIImage *theImage){
+            self.image = theImage;
+            completionHandler(theImage);
+        }];
+    }
+
 }
 
--(void)getCatImage:(void (^)(UIImage *))blockName
+-(void)downloadImage:(void (^)(UIImage *theImage))completionHandler
 {
-    UIImage *theimage;
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration]; // 3
     
-    blockName(theimage);
+    NSURLSessionDownloadTask *downloadTask = [session downloadTaskWithURL:self.url
+                                                        completionHandler:^(NSURL * _Nullable locationOfDownloadedFile,
+                                                                            NSURLResponse * _Nullable response,
+                                                                            NSError * _Nullable error) {
+                                                            if (error) {
+                                                                NSLog(@"error: %@", error.localizedDescription);
+                                                                return;
+                                                            }
+                                                            
+                                                            NSData *downloadedRawData = [NSData dataWithContentsOfURL:locationOfDownloadedFile];
+                                                            UIImage *downloadedImage = [UIImage imageWithData:downloadedRawData];
+                                                            
+                                                            completionHandler(downloadedImage);
+                                                            
+                                                        }];
+    
+    [downloadTask resume];
 }
 
 @end
