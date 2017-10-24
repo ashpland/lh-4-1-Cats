@@ -12,7 +12,6 @@
 @interface Cat : NSObject
 
 @property (copy, nonatomic) NSString *photoDescription;
-@property (copy, nonatomic) UIImage *image;
 
 - (instancetype)initWithULR:(NSURL *)url andDescription:(NSString *)description;
 

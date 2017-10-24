@@ -72,14 +72,47 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="😻 Cats! 😻" id="atR-lS-mHF"/>
+                    <navigationItem key="navigationItem" title="😻 Cats! 😻" id="atR-lS-mHF">
+                        <barButtonItem key="backBarButtonItem" title="😻" id="FLP-tq-QGh"/>
+                        <barButtonItem key="rightBarButtonItem" title="🌎" id="Lnp-DS-KOd">
+                            <connections>
+                                <segue destination="kLg-E0-TAg" kind="show" id="Se6-3p-uKg"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="4Pi-0x-Jdc" id="vHF-uJ-20U"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1367" y="110"/>
+            <point key="canvasLocation" x="1313" y="109"/>
+        </scene>
+        <!--🌎 Cat Map! 🌍-->
+        <scene sceneID="nSc-Jl-QPz">
+            <objects>
+                <viewController title="🌎 Cat Map! 🌍" id="kLg-E0-TAg" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xfI-Lg-abA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="fAY-5e-QKg">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="fAY-5e-QKg" firstAttribute="leading" secondItem="pk9-ll-dGj" secondAttribute="leading" id="7qL-dG-QU5"/>
+                            <constraint firstItem="pk9-ll-dGj" firstAttribute="trailing" secondItem="fAY-5e-QKg" secondAttribute="trailing" id="PAR-wN-uQV"/>
+                            <constraint firstItem="fAY-5e-QKg" firstAttribute="top" secondItem="pk9-ll-dGj" secondAttribute="top" id="ZOe-FZ-yTa"/>
+                            <constraint firstItem="pk9-ll-dGj" firstAttribute="bottom" secondItem="fAY-5e-QKg" secondAttribute="bottom" id="zPu-et-Q8T"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="pk9-ll-dGj"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Izd-SR-0Sh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2121" y="110"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="8v0-7J-Gn1">

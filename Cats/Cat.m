@@ -11,6 +11,7 @@
 @interface Cat ()
 
 @property (strong, nonatomic) NSURL *url;
+@property (copy, nonatomic) UIImage *image;
 
 @end
 
