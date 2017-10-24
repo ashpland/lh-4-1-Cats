@@ -18,6 +18,7 @@
 		491E0B291F9EF176005BA4A7 /* CatCollectionDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 491E0B281F9EF176005BA4A7 /* CatCollectionDataSource.m */; };
 		491E0B2C1F9F26AB005BA4A7 /* CatCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 491E0B2B1F9F26AB005BA4A7 /* CatCollectionViewCell.m */; };
 		491E0B2F1F9F2F78005BA4A7 /* PhotoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 491E0B2E1F9F2F78005BA4A7 /* PhotoLayout.m */; };
+		49BC1ED51F9FC20E0017ACC2 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49BC1ED41F9FC20E0017ACC2 /* MapViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,8 @@
 		491E0B2B1F9F26AB005BA4A7 /* CatCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CatCollectionViewCell.m; sourceTree = "<group>"; };
 		491E0B2D1F9F2F78005BA4A7 /* PhotoLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoLayout.h; sourceTree = "<group>"; };
 		491E0B2E1F9F2F78005BA4A7 /* PhotoLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoLayout.m; sourceTree = "<group>"; };
+		49BC1ED31F9FC20E0017ACC2 /* MapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		49BC1ED41F9FC20E0017ACC2 /* MapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +80,8 @@
 				491E0B0C1F9EE387005BA4A7 /* AppDelegate.m */,
 				491E0B0E1F9EE387005BA4A7 /* ViewController.h */,
 				491E0B0F1F9EE387005BA4A7 /* ViewController.m */,
+				49BC1ED31F9FC20E0017ACC2 /* MapViewController.h */,
+				49BC1ED41F9FC20E0017ACC2 /* MapViewController.m */,
 				491E0B271F9EF176005BA4A7 /* CatCollectionDataSource.h */,
 				491E0B281F9EF176005BA4A7 /* CatCollectionDataSource.m */,
 				491E0B2A1F9F26AB005BA4A7 /* CatCollectionViewCell.h */,
@@ -170,6 +175,7 @@
 				491E0B2F1F9F2F78005BA4A7 /* PhotoLayout.m in Sources */,
 				491E0B2C1F9F26AB005BA4A7 /* CatCollectionViewCell.m in Sources */,
 				491E0B261F9EE683005BA4A7 /* CatManager.m in Sources */,
+				49BC1ED51F9FC20E0017ACC2 /* MapViewController.m in Sources */,
 				491E0B291F9EF176005BA4A7 /* CatCollectionDataSource.m in Sources */,
 				491E0B231F9EE54E005BA4A7 /* Cat.m in Sources */,
 				491E0B101F9EE387005BA4A7 /* ViewController.m in Sources */,

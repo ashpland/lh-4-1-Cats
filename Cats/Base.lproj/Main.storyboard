@@ -91,13 +91,16 @@
         <!--🌎 Cat Map! 🌍-->
         <scene sceneID="nSc-Jl-QPz">
             <objects>
-                <viewController title="🌎 Cat Map! 🌍" id="kLg-E0-TAg" sceneMemberID="viewController">
+                <viewController title="🌎 Cat Map! 🌍" id="kLg-E0-TAg" customClass="MapViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xfI-Lg-abA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="fAY-5e-QKg">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <connections>
+                                    <outlet property="delegate" destination="kLg-E0-TAg" id="NIh-I6-FIA"/>
+                                </connections>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
