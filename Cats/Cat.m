@@ -13,18 +13,17 @@
 @property (strong, nonatomic) NSURL *url;
 @property (copy, nonatomic, readwrite) UIImage *image;
 
-
 @end
 
 
 @implementation Cat
 
-- (instancetype)initWithULR:(NSURL *)url andDescription:(NSString *)description
+- (instancetype)initWithURL:(NSURL *)url andDescription:(NSString *)description
 {
-    return [self initWithULR:url andDescription:description andLocation:kCLLocationCoordinate2DInvalid];
+    return [self initWithURL:url andDescription:description andLocation:kCLLocationCoordinate2DInvalid];
 }
 
-- (instancetype)initWithULR:(NSURL *)url andDescription:(NSString *)description andLocation:(CLLocationCoordinate2D)location
+- (instancetype)initWithURL:(NSURL *)url andDescription:(NSString *)description andLocation:(CLLocationCoordinate2D)location
 {
     self = [super init];
     if (self) {
@@ -37,24 +36,17 @@
 }
 
 
-+(instancetype)newCatWithULR:(NSURL *)url andDescription:(NSString *)description
++(instancetype)newCatWithURL:(NSURL *)url andDescription:(NSString *)description
 {
-    return [[Cat alloc] initWithULR:url andDescription:description];
+    return [[Cat alloc] initWithURL:url andDescription:description];
 }
 
--(void)downloadCatImage:(void (^)(Cat *))completionHandler
+-(void)requestCatImage:(void (^)(Cat *))completionHandler
 {
-//    NSLog(@"Cat %lu: %@", self.index, self.image);
-    
-    if (self.image) {
+    [self downloadImage:^(UIImage *theImage){
+        self.image = theImage;
         completionHandler(self);
-    } else {
-        [self downloadImage:^(UIImage *theImage){
-            self.image = theImage;
-            completionHandler(self);
-        }];
-    }
-
+    }];
 }
 
 -(void)downloadImage:(void (^)(UIImage *theImage))completionHandler

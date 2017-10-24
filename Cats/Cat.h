@@ -17,13 +17,13 @@
 @property (copy, nonatomic) NSString *photoDescription;
 @property (assign, nonatomic) CLLocationCoordinate2D location;
 
-- (instancetype)initWithULR:(NSURL *)url andDescription:(NSString *)description;
-- (instancetype)initWithULR:(NSURL *)url andDescription:(NSString *)description andLocation:(CLLocationCoordinate2D)location;
+- (instancetype)initWithURL:(NSURL *)url andDescription:(NSString *)description;
+- (instancetype)initWithURL:(NSURL *)url andDescription:(NSString *)description andLocation:(CLLocationCoordinate2D)location;
 
 
-+ (instancetype)newCatWithULR:(NSURL *)url andDescription:(NSString *)description;
++ (instancetype)newCatWithURL:(NSURL *)url andDescription:(NSString *)description;
 
-- (void)downloadCatImage:(void (^)(Cat *theCat))completionHandler;
+- (void)requestCatImage:(void (^)(Cat *theCat))completionHandler;
 
 
 

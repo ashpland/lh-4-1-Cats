@@ -38,16 +38,10 @@
                               ];
     
     NSURL *catURL = [NSURL URLWithString:catURLString];
-    
-    
-    
-    
-    Cat *newCat = [Cat newCatWithULR:catURL andDescription:[catInfo objectForKey:@"title"]];
-    
+
+    Cat *newCat = [Cat newCatWithURL:catURL andDescription:[catInfo objectForKey:@"title"]];
     newCat.index = self.theCats.count;
-    
     [self.theCats addObject:newCat];
-    
     [self addCatLocation:newCat withID:[catInfo objectForKey:@"id"]];
     
 }
@@ -57,7 +51,6 @@
     [self downloadLocationDataFor:idString withCompletion:^(CLLocationCoordinate2D coordinates){
         cat.location = coordinates;
     }];
-    
 }
 
 -(Cat *)getCatForIndex:(NSInteger)index

@@ -13,32 +13,14 @@
 
 
 - (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    
     return [self.catManager numberOfCats];
 }
 
 - (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
     CatCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"catCell" forIndexPath:indexPath];
     
-
-    Cat *currentCat = [self.catManager getCatForIndex:indexPath.item];
-
-    cell.cat = currentCat;
-        
-    cell.catCellImageView.image = nil;
-    
-    cell.catCellLabel.text = currentCat.photoDescription;
-
-    if (currentCat.image) {
-        cell.catCellImageView.image = currentCat.image;
-    } else {
-        [currentCat downloadCatImage:^(Cat *theCat) {
-            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                if ([cell.cat isEqual:theCat])
-                    cell.catCellImageView.image = theCat.image;
-
-            }];
-        }];
-    }
+    cell.cat = [self.catManager getCatForIndex:indexPath.item];
     
     return cell;
 }

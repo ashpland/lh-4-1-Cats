@@ -10,4 +10,23 @@
 
 @implementation CatCollectionViewCell
 
+-(void)setCat:(Cat *)cat
+{
+    _cat = cat;
+    self.catCellLabel.text = cat.photoDescription;
+    
+    if (cat.image) {
+        self.catCellImageView.image = cat.image;
+    } else {
+        self.catCellImageView.image = nil;
+        [cat requestCatImage:^(Cat *theCat) {
+                [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                    if ([self.cat isEqual:theCat])
+                        self.catCellImageView.image = theCat.image;
+                }];
+        }];
+    }
+    
+}
+
 @end
