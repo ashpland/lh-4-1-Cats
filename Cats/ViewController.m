@@ -25,8 +25,6 @@
 
 -(void)viewDidLoad {
     
-    self.navigationController.navigationBar.prefersLargeTitles = YES;
-
     [CatManager sharedCatManager];
     
     [self downloadCatData];

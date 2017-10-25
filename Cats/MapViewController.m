@@ -22,16 +22,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationController.navigationBar.prefersLargeTitles = NO;
-
     
     [self setupMapView];
 
     self.mapManager.locationManager.delegate = self;
-    
-    
-    [self addTestAnnotations];
 }
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [self addCats];
+}
+
 
 - (void)setupMapView {
     self.mapView.mapType = MKMapTypeStandard;
@@ -50,21 +51,26 @@
     return _mapManager;
 }
 
-
--(void)addTestAnnotations
+-(void)addCats
 {
-    MKPointAnnotation *myAnnotation = [[MKPointAnnotation alloc]init];
-    myAnnotation.coordinate = CLLocationCoordinate2DMake(49.281838, -123.108151);
-    [myAnnotation setTitle:@"LHL"];
-    [myAnnotation setSubtitle:@"Where we currently are"];
-    [self.mapView addAnnotation: myAnnotation];
-    
-    [self.mapView addAnnotation:[CatManager getCatForIndex:0]];
-    [self.mapView addAnnotation:[CatManager getCatForIndex:1]];
-    
-    //Maybe wrap the code in a if(cat.location) then get location thing like in the data source method
-    
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0);
+  
+    for (Cat *currentCat in [CatManager allTheCats]){
+        dispatch_async(queue, ^{
+            if (currentCat.location) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.mapView addAnnotation:currentCat];
+                });
+            } else {
+                [currentCat requestCatLocation:^(Cat *theCat){
+                    [self.mapView addAnnotation:theCat];
+                }];
+            }
+        });
+    }
 }
+        
+
 
 
 @end

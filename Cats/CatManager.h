@@ -16,5 +16,6 @@
 +(void)addCat:(NSDictionary *)catInfo;
 +(Cat *)getCatForIndex:(NSInteger)index;
 +(NSInteger)numberOfCats;
++(NSArray<Cat *> *)allTheCats;
 
 @end
