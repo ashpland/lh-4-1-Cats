@@ -30,7 +30,8 @@
 
 -(void)viewDidAppear:(BOOL)animated
 {
-    [self addCats];
+//    [self addCatsGCD];
+    [self addCatsNSO];
 }
 
 
@@ -51,25 +52,60 @@
     return _mapManager;
 }
 
--(void)addCats
+-(void)addCatsGCD
 {
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0);
-  
+
+    dispatch_async(queue, ^{
     for (Cat *currentCat in [CatManager allTheCats]){
-        dispatch_async(queue, ^{
             if (currentCat.location) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self.mapView addAnnotation:currentCat];
                 });
             } else {
                 [currentCat requestCatLocation:^(Cat *theCat){
-                    [self.mapView addAnnotation:theCat];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self.mapView addAnnotation:theCat];
+                    });
+
                 }];
             }
-        });
+    } });
+}
+
+-(void)addCatsNSO
+{
+    
+    NSOperationQueue *myQueue = [NSOperationQueue new];
+    myQueue.maxConcurrentOperationCount = 50;
+    
+    for (Cat *currentCat in [CatManager allTheCats]){
+
+        NSBlockOperation *catLocationOperation = [NSBlockOperation blockOperationWithBlock:^{
+            if (currentCat.location) {
+                NSBlockOperation *addAnnotation = [NSBlockOperation blockOperationWithBlock:^{
+                    [self.mapView addAnnotation:currentCat];
+                }];
+                addAnnotation.queuePriority = NSOperationQueuePriorityVeryLow;
+                [[NSOperationQueue mainQueue] addOperation:addAnnotation];
+            }
+            
+            else {
+                [currentCat requestCatLocation:^(Cat *theCat){
+                    [currentCat requestCatLocation:^(Cat *theCat){
+                        NSBlockOperation *addAnnotation = [NSBlockOperation blockOperationWithBlock:^{
+                            [self.mapView addAnnotation:currentCat];
+                        }];
+                        addAnnotation.queuePriority = NSOperationQueuePriorityVeryLow;
+                        [[NSOperationQueue mainQueue] addOperation:addAnnotation];
+                    }];
+                }];
+            }
+        }];
+        
+        [myQueue addOperation:catLocationOperation];
     }
 }
-        
 
 
 
