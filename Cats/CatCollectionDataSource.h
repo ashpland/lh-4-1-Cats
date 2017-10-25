@@ -12,6 +12,4 @@
 
 @interface CatCollectionDataSource : NSObject <UICollectionViewDataSource>
 
-@property (strong, nonatomic) CatManager *catManager;
-
 @end

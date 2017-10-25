@@ -11,8 +11,10 @@
 
 @interface CatManager : NSObject
 
--(void)addCat:(NSDictionary *)catInfo;
--(Cat *)getCatForIndex:(NSInteger)index;
--(NSInteger)numberOfCats;
++ (instancetype)sharedCatManager;
+
++(void)addCat:(NSDictionary *)catInfo;
++(Cat *)getCatForIndex:(NSInteger)index;
++(NSInteger)numberOfCats;
 
 @end

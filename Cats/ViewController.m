@@ -13,8 +13,6 @@
 
 @interface ViewController ()
 
-@property (strong, nonatomic) CatManager *catManager;
-@property (strong, nonatomic) UIImage *testImage;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (strong, nonatomic) CatCollectionDataSource *catCollectionDataSource;
 
@@ -29,13 +27,11 @@
     
     self.navigationController.navigationBar.prefersLargeTitles = YES;
 
-    
-    self.catManager = [CatManager new];
+    [CatManager sharedCatManager];
     
     [self downloadCatData];
 
     self.catCollectionDataSource = [CatCollectionDataSource new];
-    self.catCollectionDataSource.catManager = self.catManager;
     
     self.collectionView.dataSource = self.catCollectionDataSource;
     self.collectionView.delegate = self;
@@ -85,7 +81,7 @@
     
     
     for (NSDictionary *curCatDict in catDicts) {
-        [self.catManager addCat:curCatDict];
+        [CatManager addCat:curCatDict];
     }
     
     

@@ -17,6 +17,17 @@
 
 @implementation CatManager
 
++ (instancetype)sharedCatManager {
+    static CatManager *catManagerPrime = nil;
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        catManagerPrime = [self new];
+    });
+    return catManagerPrime;
+}
+
+
 - (instancetype)init
 {
     self = [super init];
@@ -26,6 +37,9 @@
     return self;
 }
 
++(void)addCat:(NSDictionary *)catInfo {
+    [[self sharedCatManager] addCat:catInfo];
+}
 
 -(void)addCat:(NSDictionary *)catInfo
 {
@@ -53,12 +67,22 @@
     }];
 }
 
++(Cat *)getCatForIndex:(NSInteger)index
+{
+    return [[self sharedCatManager] getCatForIndex:index];
+}
+
 -(Cat *)getCatForIndex:(NSInteger)index
 {
     if (index < self.theCats.count)
         return self.theCats[index];
     else
         return nil;
+}
+
++(NSInteger)numberOfCats
+{
+    return [[self sharedCatManager] numberOfCats];
 }
 
 -(NSInteger)numberOfCats
@@ -111,8 +135,6 @@
     double lon = [(NSString *)[locationDict objectForKey:@"longitude"] doubleValue];
 
     return CLLocationCoordinate2DMake(lat, lon);
-    
-    
 }
 
 

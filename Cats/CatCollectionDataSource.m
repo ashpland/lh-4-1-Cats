@@ -14,13 +14,13 @@
 
 - (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
-    return [self.catManager numberOfCats];
+    return [CatManager numberOfCats];
 }
 
 - (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
     CatCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"catCell" forIndexPath:indexPath];
     
-    cell.cat = [self.catManager getCatForIndex:indexPath.item];
+    cell.cat = [CatManager getCatForIndex:indexPath.item];
     
     return cell;
 }
