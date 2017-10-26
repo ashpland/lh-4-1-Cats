@@ -94,6 +94,8 @@
 }
 
 - (CLLocation *)processLocationJSON:(NSURL *)geoURL {
+    
+    // used dataWithContentsOfURL because I didn't realize that dataTask and downloadTask were different and this got it to work so I could finish developing a different part of the app
     NSData *rawData = [NSData dataWithContentsOfURL: geoURL];
 
     

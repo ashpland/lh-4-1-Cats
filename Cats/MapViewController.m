@@ -52,6 +52,10 @@
     return _mapManager;
 }
 
+
+
+// the following two methods loop Flickr api calls because there doesn't seem to be a way to request a batch of photos including location image, or to query their geo api with more than one photo id :(
+
 -(void)addCatsGCD
 {
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0);
